@@ -1,8 +1,8 @@
-local config = require('lvim-focus.modules.config')
-local utlis = require('lvim-focus.modules.utils')
+local config = require('lvim-focus.config')
+local utils = require('lvim-focus.utils')
+local autocmd = require('lvim-focus.autocmd')
 
 local M = {}
-
 
 M.setup = function(options)
     local default_blacklist = {
@@ -17,13 +17,21 @@ M.setup = function(options)
     if options ~= nil then
 		for ind, opt in pairs(options) do
             if ind == 'blacklist' then
-                local all_blacklist = utlis.table_concat(config.blacklist, opt)
-                opt = utlis.remove_duplicates(all_blacklist)
+                local all_blacklist = utils.table_concat(config.blacklist, opt)
+                opt = utils.remove_duplicates(all_blacklist)
             end
 			config[ind] = opt
 		end
 	end
-    print(config.colorcolumn_width)
+
+    print(config.azdd)
+
+    M.init()
 end
+
+M.init = function()
+    autocmd.init()
+end
+
 
 return M

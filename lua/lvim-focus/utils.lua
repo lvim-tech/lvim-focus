@@ -1,3 +1,5 @@
+local cmd = vim.api.nvim_command
+
 local M = {}
 
 M.create_augroups = function (definitions)

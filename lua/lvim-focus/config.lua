@@ -1,5 +1,7 @@
 M = {
 	enable_plugin = true,
+	az = "biser",
+	resize = true,
 	cursorline = true,
 	cursorcolumn = false,
 	signcolumn = true,
@@ -9,7 +11,9 @@ M = {
 	number = true,
 	relativenumber = true,
 	hybridnumber = true,
-	blacklist = {}
+	blacklist = {
+
+	}
 }
 
 return M
