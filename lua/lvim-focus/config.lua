@@ -11,9 +11,7 @@ M = {
 	number = true,
 	relativenumber = true,
 	hybridnumber = true,
-	blacklist = {
-
-	}
+	blacklist = {}
 }
 
 return M

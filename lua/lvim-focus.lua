@@ -6,9 +6,10 @@ local M = {}
 
 M.setup = function(options)
     local default_blacklist = {
+        "Trouble",
+        'NvimTree',
         'dashboard',
         'vista',
-        'NvimTree',
         'spectre_panel',
         'diffviewfiles',
         'qf'
@@ -22,9 +23,12 @@ M.setup = function(options)
             end
 			config[ind] = opt
 		end
+        if options["blacklist"] == nil then
+            config["blacklist"] = default_blacklist
+        end
+    else
+        config["blacklist"] = default_blacklist
 	end
-
-    print(config.azdd)
 
     M.init()
 end

@@ -1,3 +1,4 @@
+local config = require('lvim-focus.config')
 local utlis = require('lvim-focus.config')
 
 local M = {}
@@ -5,9 +6,10 @@ local M = {}
 local GOLDEN_RATIO = 1.618
 
 local function ignore_by_buftype(types)
-  local buftype = vim.api.nvim_buf_get_option(0, 'buftype')
+  local buftype = vim.bo.filetype
   for _, type in pairs(types) do
     if type == buftype then
+      print(buftype)
       return 1
     end
   end
@@ -21,7 +23,8 @@ local function ignore_float_windows()
 end
 
 local ignore_callbacks = {
-  {ignore_by_buftype, {'terminal','quickfix','NerdTree', 'vista'}},
+  -- {ignore_by_buftype, {'terminal','quickfix','NvimTree', 'vista'}},
+  {ignore_by_buftype, config.blacklist},
   {ignore_float_windows},
 }
 
