@@ -1,4 +1,3 @@
-local api = vim.api
 local cmd = vim.api.nvim_command
 
 local M = {}
@@ -20,7 +19,7 @@ M.serialize = function(tbl)
     local value, serializedValue
     for i = 1, #tbl do
         value = tbl[i]
-        serializedValue = type(value) == "table" and serialize(value) or value
+        serializedValue = type(value) == "table" and M.serialize(value) or value
         serializedValue = "'" .. serializedValue .. "'"
         table.insert(serializedValues, serializedValue)
     end
