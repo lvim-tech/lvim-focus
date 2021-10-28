@@ -18,13 +18,17 @@ M.setup = function(options)
             config[ind] = opt
         end
     end
+    M.init()
+end
+
+M.init = function()
     if config.active_plugin == 1 then
+        autocmd.enable()
         if config.winhighlight then
             vim.cmd("hi link FocusedWindow LvimFocus")
             vim.cmd("hi link UnfocusedWindow Normal")
             vim.wo.winhighlight = "Normal:FocusedWindow,NormalNC:UnfocusedWindow"
         end
-        autocmd.enable()
     end
 end
 
