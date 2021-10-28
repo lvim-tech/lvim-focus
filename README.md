@@ -37,7 +37,7 @@
 use {
     'lvim-tech/lvim-focus',
     config = function()
-        require("focus").setup()
+        require("lvim-focus").setup()
     end
 }
 ```
