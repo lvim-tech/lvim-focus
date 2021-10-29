@@ -64,10 +64,6 @@ M.resize = function()
     elseif type(layout[2]) == "table" then
         if layout[1] == "row" then
             M.calculate_columns(layout[2])
-        elseif layout[1] == "col" and #layout[2] <= 3 then
-            api.nvim_exec([[exe "normal \<C-W>\="]], true)
-        else
-            api.nvim_exec([[exe "normal \<C-W>\="]], true)
         end
     end
 end
