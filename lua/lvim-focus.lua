@@ -18,10 +18,6 @@ M.setup = function(options)
             config[ind] = opt
         end
     end
-    M.init()
-end
-
-M.init = function()
     if config.active_plugin == 1 then
         autocmd.enable()
         if config.winhighlight then

@@ -13,6 +13,8 @@ local M = {
     blacklist_ft = {
         "ctrlspace",
         "packer",
+        "undotree",
+        "diff",
         "Outline",
         "NvimTree",
         "LvimHelper",
