@@ -22,7 +22,7 @@ local M = {
         "dashboard",
         "vista",
         "spectre_panel",
-        "diffviewfiles",
+        "DiffviewFiles",
         "qf"
     }
 }
