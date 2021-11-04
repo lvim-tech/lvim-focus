@@ -9,6 +9,12 @@ M.setup = function(user_config)
     if user_config ~= nil then
         utils.merge(config, user_config)
     end
+    vim.schedule(function()
+        M.init()
+    end)
+end
+
+M.init = function()
     if config.active_plugin == 1 then
         autocmd.enable()
         if config.winhighlight then
