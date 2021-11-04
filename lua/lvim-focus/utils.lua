@@ -2,6 +2,37 @@ local cmd = vim.api.nvim_command
 
 local M = {}
 
+M.merge = function(t1, t2)
+    for k, v in pairs(t2) do
+        if (type(v) == "table") and (type(t1[k] or false) == "table") then
+            if M.is_array(t1[k]) then
+                t1[k] = M.concat(t1[k], v)
+            else
+                M.merge(t1[k], t2[k])
+            end
+        else
+            t1[k] = v
+        end
+    end
+    return t1
+end
+
+M.concat = function(t1, t2)
+    for i = 1, #t2 do
+        table.insert(t1, t2[i])
+    end
+    return t1
+end
+
+M.is_array = function(t)
+  local i = 0
+  for _ in pairs(t) do
+      i = i + 1
+      if t[i] == nil then return false end
+  end
+  return true
+end
+
 M.create_augroups = function(definitions)
     for group_name, definition in pairs(definitions) do
         cmd("augroup " .. group_name)
@@ -24,13 +55,6 @@ M.serialize = function(tbl)
         table.insert(serializedValues, serializedValue)
     end
     return string.format("{ %s }", table.concat(serializedValues, ", "))
-end
-
-M.table_concat = function(tbl1, tbl2)
-    for i = 1, #tbl2 do
-        table.insert(tbl1, tbl2[i])
-    end
-    return tbl1
 end
 
 M.remove_duplicates = function(tbl)

@@ -1,22 +1,13 @@
-local config = require("modules.config")
-local utils = require("modules.utils")
-local autocmd = require("modules.autocmd")
-local resizer = require("modules.resizer")
+local config = require("lvim-focus.config")
+local utils = require("lvim-focus.utils")
+local autocmd = require("lvim-focus.autocmd")
+local resizer = require("lvim-focus.resizer")
 
 local M = {}
 
-M.setup = function(options)
-    if options ~= nil then
-        for ind, opt in pairs(options) do
-            if ind == "blacklist_ft" then
-                local all_blacklist_ft = utils.table_concat(config.blacklist_ft, opt)
-                opt = utils.remove_duplicates(all_blacklist_ft)
-            elseif ind == "blacklist_bt" then
-                local all_blacklist_bt = utils.table_concat(config.blacklist_bt, opt)
-                opt = utils.remove_duplicates(all_blacklist_bt)
-            end
-            config[ind] = opt
-        end
+M.setup = function(user_config)
+    if user_config ~= nil then
+        utils.merge(config, user_config)
     end
     if config.active_plugin == 1 then
         autocmd.enable()

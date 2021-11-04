@@ -1,5 +1,5 @@
-local config = require("modules.config")
-local utils = require("modules.utils")
+local config = require("lvim-focus.config")
+local utils = require("lvim-focus.utils")
 
 local M = {}
 
@@ -12,7 +12,7 @@ function M.enable()
             {
                 "WinEnter,BufEnter,BufWinEnter,TabEnter,BufLeave,WinLeave,WinClosed,BufDelete,VimResized",
                 "*",
-                'lua vim.schedule(function() require"modules.resizer".resize() end)'
+                'lua vim.schedule(function() require"lvim-focus.resizer".resize() end)'
             }
         }
     end

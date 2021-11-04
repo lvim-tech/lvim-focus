@@ -1,6 +1,6 @@
 local api = vim.api
-local config = require("modules.config")
-local utils = require("modules.utils")
+local config = require("lvim-focus.config")
+local utils = require("lvim-focus.utils")
 
 local M = {}
 
@@ -111,7 +111,7 @@ M.calculate_columns = function(tbl)
         else
             M.sizes.calculate_error = true
         end
-        utils.table_concat(M.sizes.columns, temp_table)
+        utils.concat(M.sizes.columns, temp_table)
         temp_table = {}
     end
     if M.sizes.calculate_error then
