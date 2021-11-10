@@ -4,7 +4,8 @@ local utils = require("lvim-focus.utils")
 local M = {}
 
 function M.enable()
-    local blacklist = utils.serialize(config.blacklist_ft)
+    local blacklist_ft = utils.serialize(config.blacklist_ft)
+    local blacklist_bt = utils.serialize(config.blacklist_bt)
     local autocmds = {}
 
     if config.resize then
@@ -19,22 +20,22 @@ function M.enable()
 
     if config.signcolumn then
         autocmds["lvim_focus_signcolumn"] = {
-            {"BufEnter,WinEnter", "*", 'if index(luaeval("' .. blacklist .. '"), &ft) < 0 | setlocal signcolumn=yes'},
-            {"BufLeave,WinLeave", "*", 'if index(luaeval("' .. blacklist .. '"), &ft) < 0 | setlocal signcolumn=no'}
+            {"BufEnter,WinEnter", "*", 'if index(luaeval("' .. blacklist_ft .. '"), &ft) < 0 && index(luaeval("' .. blacklist_bt .. '"), &bt) < 0 | setlocal signcolumn=yes'},
+            {"BufLeave,WinLeave", "*", 'if index(luaeval("' .. blacklist_ft .. '"), &ft) < 0 && index(luaeval("' .. blacklist_bt .. '"), &bt) < 0 | setlocal signcolumn=no'}
         }
     end
 
     if config.cursorline then
         autocmds["lvim_focus_cursorline"] = {
-            {"BufEnter,WinEnter", "*", 'if index(luaeval("' .. blacklist .. '"), &ft) < 0 | setlocal cursorline'},
-            {"BufLeave,WinLeave", "*", 'if index(luaeval("' .. blacklist .. '"), &ft) < 0 | setlocal nocursorline'}
+            {"BufEnter,WinEnter", "*", 'if index(luaeval("' .. blacklist_ft .. '"), &ft) < 0 && index(luaeval("' .. blacklist_bt .. '"), &bt) < 0 | setlocal cursorline'},
+            {"BufLeave,WinLeave", "*", 'if index(luaeval("' .. blacklist_ft .. '"), &ft) < 0 && index(luaeval("' .. blacklist_bt .. '"), &bt) < 0 | setlocal nocursorline'}
         }
     end
 
     if config.cursorcolumn then
         autocmds["lvim_focus_cursorcolumn"] = {
-            {"BufEnter,WinEnter", "*", 'if index(luaeval("' .. blacklist .. '"), &ft) < 0 | setlocal cursorcolumn'},
-            {"BufLeave,WinLeave", "*", 'if index(luaeval("' .. blacklist .. '"), &ft) < 0 | setlocal nocursorcolumn'}
+            {"BufEnter,WinEnter", "*", 'if index(luaeval("' .. blacklist_ft .. '"), &ft) < 0 && index(luaeval("' .. blacklist_bt .. '"), &bt) < 0 | setlocal cursorcolumn'},
+            {"BufLeave,WinLeave", "*", 'if index(luaeval("' .. blacklist_ft .. '"), &ft) < 0 && index(luaeval("' .. blacklist_bt .. '"), &bt) < 0 | setlocal nocursorcolumn'}
         }
     end
 
@@ -43,16 +44,16 @@ function M.enable()
             {
                 "BufEnter,WinEnter",
                 "*",
-                'if index(luaeval("' .. blacklist .. '"), &ft) < 0 | setlocal colorcolumn=' .. config.colorcolumn_width
+                'if index(luaeval("' .. blacklist_ft .. '"), &ft) < 0 && index(luaeval("' .. blacklist_bt .. '"), &bt) < 0 | setlocal colorcolumn=' .. config.colorcolumn_width
             },
-            {"BufLeave,WinLeave", "*", 'if index(luaeval("' .. blacklist .. '"), &ft) < 0 | setlocal colorcolumn=0'}
+            {"BufLeave,WinLeave", "*", 'if index(luaeval("' .. blacklist_ft .. '"), &ft) < 0 && index(luaeval("' .. blacklist_bt .. '"), &bt) < 0 | setlocal colorcolumn=0'}
         }
     end
 
     if config.number then
         autocmds["lvim_focus_number"] = {
-            {"BufEnter,WinEnter", "*", 'if index(luaeval("' .. blacklist .. '"), &ft) < 0 | setlocal number'},
-            {"BufLeave,WinLeave", "*", 'if index(luaeval("' .. blacklist .. '"), &ft) < 0 | setlocal nonumber'}
+            {"BufEnter,WinEnter", "*", 'if index(luaeval("' .. blacklist_ft .. '"), &ft) < 0 && index(luaeval("' .. blacklist_bt .. '"), &bt) < 0 | setlocal number'},
+            {"BufLeave,WinLeave", "*", 'if index(luaeval("' .. blacklist_ft .. '"), &ft) < 0 && index(luaeval("' .. blacklist_bt .. '"), &bt) < 0 | setlocal nonumber'}
         }
     end
 
@@ -61,12 +62,12 @@ function M.enable()
             {
                 "BufEnter,WinEnter",
                 "*",
-                'if index(luaeval("' .. blacklist .. '"), &ft) < 0 | setlocal nonumber relativenumber'
+                'if index(luaeval("' .. blacklist_ft .. '"), &ft) < 0 && index(luaeval("' .. blacklist_bt .. '"), &bt) < 0 | setlocal nonumber relativenumber'
             },
             {
                 "BufLeave,WinLeave",
                 "*",
-                'if index(luaeval("' .. blacklist .. '"), &ft) < 0 | setlocal nonumber norelativenumber'
+                'if index(luaeval("' .. blacklist_ft .. '"), &ft) < 0 && index(luaeval("' .. blacklist_bt .. '"), &bt) < 0 | setlocal nonumber norelativenumber'
             }
         }
     end
@@ -76,12 +77,12 @@ function M.enable()
             {
                 "BufEnter,WinEnter",
                 "*",
-                'if index(luaeval("' .. blacklist .. '"), &ft) < 0 | setlocal number relativenumber'
+                'if index(luaeval("' .. blacklist_ft .. '"), &ft) < 0 && index(luaeval("' .. blacklist_bt .. '"), &bt) < 0 | setlocal number relativenumber'
             },
             {
                 "BufLeave,WinLeave",
                 "*",
-                'if index(luaeval("' .. blacklist .. '"), &ft) < 0 | setlocal nonumber norelativenumber'
+                'if index(luaeval("' .. blacklist_ft .. '"), &ft) < 0 && index(luaeval("' .. blacklist_bt .. '"), &bt) < 0 | setlocal nonumber norelativenumber'
             }
         }
     end
@@ -111,101 +112,101 @@ function M.disable()
 end
 
 function M.restore_enable()
-    local blacklist = utils.serialize(config.blacklist)
+    local blacklist_ft = utils.serialize(config.blacklist_ft)
     if config.signcolumn then
-        vim.cmd([[windo if index(luaeval("]] .. blacklist .. [["), &ft) < 0 | setlocal signcolumn=no]])
+        vim.cmd([[windo if index(luaeval("]] .. blacklist_ft .. [["), &ft) < 0 | setlocal signcolumn=no]])
     end
 
     if config.cursorline then
-        vim.cmd([[windo if index(luaeval("]] .. blacklist .. [["), &ft) < 0 | setlocal nocursorline]])
+        vim.cmd([[windo if index(luaeval("]] .. blacklist_ft .. [["), &ft) < 0 | setlocal nocursorline]])
     end
 
     if config.cursorcolumn then
-        vim.cmd([[windo if index(luaeval("]] .. blacklist .. [["), &ft) < 0 | setlocal nocursorcolumn]])
+        vim.cmd([[windo if index(luaeval("]] .. blacklist_ft .. [["), &ft) < 0 | setlocal nocursorcolumn]])
     end
 
     if config.colorcolumn then
-        vim.cmd([[windo if index(luaeval("]] .. blacklist .. [["), &ft) < 0 | setlocal nocursorcolumn]])
+        vim.cmd([[windo if index(luaeval("]] .. blacklist_ft .. [["), &ft) < 0 | setlocal nocursorcolumn]])
     end
 
     if config.number then
-        vim.cmd([[windo if index(luaeval("]] .. blacklist .. [["), &ft) < 0 | setlocal nonumber]])
+        vim.cmd([[windo if index(luaeval("]] .. blacklist_ft .. [["), &ft) < 0 | setlocal nonumber]])
     end
 
     if config.relativenumber then
-        vim.cmd([[windo if index(luaeval("]] .. blacklist .. [["), &ft) < 0 | setlocal norelativenumber]])
+        vim.cmd([[windo if index(luaeval("]] .. blacklist_ft .. [["), &ft) < 0 | setlocal norelativenumber]])
     end
 
     if config.hybridnumber then
-        vim.cmd([[windo if index(luaeval("]] .. blacklist .. [["), &ft) < 0 | setlocal nonumber norelativenumber]])
+        vim.cmd([[windo if index(luaeval("]] .. blacklist_ft .. [["), &ft) < 0 | setlocal nonumber norelativenumber]])
     end
 end
 
 function M.restore_enable_current()
-    local blacklist = utils.serialize(config.blacklist)
+    local blacklist_ft = utils.serialize(config.blacklist_ft)
     if config.signcolumn then
-        vim.cmd([[if index(luaeval("]] .. blacklist .. [["), &ft) < 0 | setlocal signcolumn=yes]])
+        vim.cmd([[if index(luaeval("]] .. blacklist_ft .. [["), &ft) < 0 | setlocal signcolumn=yes]])
     end
 
     if config.cursorline then
-        vim.cmd([[if index(luaeval("]] .. blacklist .. [["), &ft) < 0 | setlocal cursorline]])
+        vim.cmd([[if index(luaeval("]] .. blacklist_ft .. [["), &ft) < 0 | setlocal cursorline]])
     end
 
     if config.cursorcolumn then
-        vim.cmd([[if index(luaeval("]] .. blacklist .. [["), &ft) < 0 | setlocal cursorcolumn]])
+        vim.cmd([[if index(luaeval("]] .. blacklist_ft .. [["), &ft) < 0 | setlocal cursorcolumn]])
     end
 
     if config.colorcolumn then
         vim.cmd(
             [[if index(luaeval("]] ..
-                blacklist .. [["), &ft) < 0 | setlocal colorcolumn=]] .. config.colorcolumn_width .. [[]]
+                blacklist_ft .. [["), &ft) < 0 | setlocal colorcolumn=]] .. config.colorcolumn_width .. [[]]
         )
     end
 
     if config.number then
-        vim.cmd([[if index(luaeval("]] .. blacklist .. [["), &ft) < 0 | setlocal number]])
+        vim.cmd([[if index(luaeval("]] .. blacklist_ft .. [["), &ft) < 0 | setlocal number]])
     end
 
     if config.relativenumber then
-        vim.cmd([[if index(luaeval("]] .. blacklist .. [["), &ft) < 0 | setlocal relativenumber]])
+        vim.cmd([[if index(luaeval("]] .. blacklist_ft .. [["), &ft) < 0 | setlocal relativenumber]])
     end
 
     if config.hybridnumber then
-        vim.cmd([[if index(luaeval("]] .. blacklist .. [["), &ft) < 0 | setlocal number relativenumber]])
+        vim.cmd([[if index(luaeval("]] .. blacklist_ft .. [["), &ft) < 0 | setlocal number relativenumber]])
     end
 end
 
 function M.restore_disable()
-    local blacklist = utils.serialize(config.blacklist)
+    local blacklist_ft = utils.serialize(config.blacklist_ft)
     if config.signcolumn then
-        vim.cmd([[windo if index(luaeval("]] .. blacklist .. [["), &ft) < 0 | setlocal signcolumn=yes]])
+        vim.cmd([[windo if index(luaeval("]] .. blacklist_ft .. [["), &ft) < 0 | setlocal signcolumn=yes]])
     end
 
     if config.cursorline then
-        vim.cmd([[windo if index(luaeval("]] .. blacklist .. [["), &ft) < 0 | setlocal cursorline]])
+        vim.cmd([[windo if index(luaeval("]] .. blacklist_ft .. [["), &ft) < 0 | setlocal cursorline]])
     end
 
     if config.cursorcolumn then
-        vim.cmd([[windo if index(luaeval("]] .. blacklist .. [["), &ft) < 0 | setlocal cursorcolumn]])
+        vim.cmd([[windo if index(luaeval("]] .. blacklist_ft .. [["), &ft) < 0 | setlocal cursorcolumn]])
     end
 
     if config.colorcolumn then
         vim.cmd(
             [[windo if index(luaeval("]] ..
-                blacklist .. [["), &ft) < 0 | setlocal colorcolumn=]] .. config.colorcolumn_width .. [[]]
+                blacklist_ft .. [["), &ft) < 0 | setlocal colorcolumn=]] .. config.colorcolumn_width .. [[]]
         )
     end
 
     if config.number then
-        vim.cmd([[windo if index(luaeval("]] .. blacklist .. [["), &ft) < 0 | setlocal number]])
+        vim.cmd([[windo if index(luaeval("]] .. blacklist_ft .. [["), &ft) < 0 | setlocal number]])
     end
 
     if config.relativenumber then
-        vim.cmd([[windo if index(luaeval("]] .. blacklist .. [["), &ft) < 0 | setlocal relativenumber]])
+        vim.cmd([[windo if index(luaeval("]] .. blacklist_ft .. [["), &ft) < 0 | setlocal relativenumber]])
     end
 
     if config.hybridnumber then
-        vim.cmd([[windo if index(luaeval("]] .. blacklist .. [["), &ft) < 0 | setlocal number relativenumber]])
+        vim.cmd([[windo if index(luaeval("]] .. blacklist_ft .. [["), &ft) < 0 | setlocal number relativenumber]])
     end
 end
 

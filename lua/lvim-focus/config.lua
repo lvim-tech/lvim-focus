@@ -26,8 +26,7 @@ local M = {
         "qf"
     },
     blacklist_bt = {
-        "nofile",
-        "prompt"
+        "nofile"
     }
 }
 
