@@ -25,12 +25,14 @@ M.concat = function(t1, t2)
 end
 
 M.is_array = function(t)
-  local i = 0
-  for _ in pairs(t) do
-      i = i + 1
-      if t[i] == nil then return false end
-  end
-  return true
+    local i = 0
+    for _ in pairs(t) do
+        i = i + 1
+        if t[i] == nil then
+            return false
+        end
+    end
+    return true
 end
 
 M.create_augroups = function(definitions)

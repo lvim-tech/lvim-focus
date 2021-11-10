@@ -111,7 +111,7 @@ function M.disable()
 end
 
 function M.restore_enable()
-    local blacklist = utils.serialize(config.blacklist_ft)
+    local blacklist = utils.serialize(config.blacklist)
     if config.signcolumn then
         vim.cmd([[windo if index(luaeval("]] .. blacklist .. [["), &ft) < 0 | setlocal signcolumn=no]])
     end
@@ -142,7 +142,7 @@ function M.restore_enable()
 end
 
 function M.restore_enable_current()
-    local blacklist = utils.serialize(config.blacklist_ft)
+    local blacklist = utils.serialize(config.blacklist)
     if config.signcolumn then
         vim.cmd([[if index(luaeval("]] .. blacklist .. [["), &ft) < 0 | setlocal signcolumn=yes]])
     end
@@ -176,7 +176,7 @@ function M.restore_enable_current()
 end
 
 function M.restore_disable()
-    local blacklist = utils.serialize(config.blacklist_ft)
+    local blacklist = utils.serialize(config.blacklist)
     if config.signcolumn then
         vim.cmd([[windo if index(luaeval("]] .. blacklist .. [["), &ft) < 0 | setlocal signcolumn=yes]])
     end

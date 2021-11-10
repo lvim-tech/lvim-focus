@@ -2,6 +2,7 @@ local config = require("lvim-focus.config")
 local utils = require("lvim-focus.utils")
 local autocmd = require("lvim-focus.autocmd")
 local resizer = require("lvim-focus.resizer")
+local vim = vim
 
 local M = {}
 
@@ -9,9 +10,11 @@ M.setup = function(user_config)
     if user_config ~= nil then
         utils.merge(config, user_config)
     end
-    vim.schedule(function()
-        M.init()
-    end)
+    vim.schedule(
+        function()
+            M.init()
+        end
+    )
 end
 
 M.init = function()
@@ -48,6 +51,10 @@ M.toggle = function()
         autocmd.restore_enable_current()
         resizer.resize()
     end
+end
+
+M.restore_enable_current = function()
+    autocmd.restore_enable_current()
 end
 
 return M

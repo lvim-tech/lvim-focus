@@ -4,3 +4,4 @@ endif
 let g:loaded_lvimfocus = 1
 
 command! LvimFocusToggle lua require'lvim-focus'.toggle()
+command! LvimRestoreEnableCurrent lua require'lvim-focus'.restore_enable_current()

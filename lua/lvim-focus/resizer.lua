@@ -54,7 +54,8 @@ M.resize = function()
     local layout = api.nvim_call_function("winlayout", {})
     M.sizes.current_window = api.nvim_call_function("win_getid", {})
     local ft = api.nvim_buf_get_option(api.nvim_win_get_buf(M.sizes.current_window), "filetype")
-    if M.ignore_by_float() == 1 then
+    local bt = api.nvim_buf_get_option(api.nvim_win_get_buf(M.sizes.current_window), "buftype")
+    if M.ignore_by_float() == 1 and M.ignore_by_bt(bt) == 1 then
         -- ignore
         return
     elseif M.ignore_by_ft(ft) == 1 then
@@ -72,7 +73,6 @@ M.calculate_columns = function(tbl)
     local ft, ft1, ft2
     local temp_table = {}
     local temp_in_table = {}
-
     for i = 1, #tbl do
         if tbl[i][1] == "leaf" then
             ft = api.nvim_buf_get_option(api.nvim_win_get_buf(tbl[i][2]), "filetype")

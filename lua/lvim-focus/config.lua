@@ -24,6 +24,10 @@ local M = {
         "spectre_panel",
         "DiffviewFiles",
         "qf"
+    },
+    blacklist_bt = {
+        "nofile",
+        "prompt"
     }
 }
 
