@@ -59,7 +59,7 @@ M.resize = function()
         -- ignore
         return
     elseif M.ignore_by_ft(ft) == 1 then
-        if ft ~= "ctrlspace" then
+        if ft ~= "ctrlspace" and ft ~= "floaterm" and ft ~= "toggleterm" then
             api.nvim_exec([[exe "normal \<C-W>\="]], true)
         end
     elseif type(layout[2]) == "table" then

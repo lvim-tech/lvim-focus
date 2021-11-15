@@ -18,6 +18,8 @@ local M = {
         "Outline",
         "NvimTree",
         "LvimHelper",
+        "floaterm",
+        "toggleterm",
         "Trouble",
         "dashboard",
         "vista",
