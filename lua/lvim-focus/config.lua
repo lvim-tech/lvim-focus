@@ -25,6 +25,8 @@ local M = {
         "vista",
         "spectre_panel",
         "DiffviewFiles",
+        "flutterToolsOutline",
+        "log",
         "qf"
     },
     blacklist_bt = {
