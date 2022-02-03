@@ -9,7 +9,7 @@ local M = {
     number = false,
     relativenumber = false,
     hybridnumber = false,
-    winhighlight = true,
+    winhighlight = false,
     blacklist_ft = {
         "ctrlspace",
         "packer",
@@ -27,7 +27,11 @@ local M = {
         "DiffviewFiles",
         "flutterToolsOutline",
         "log",
-        "qf"
+        "qf",
+        "dapui_scopes",
+        "dapui_breakpoints",
+        "dapui_stacks",
+        "dapui_watches"
     },
     blacklist_bt = {
         "nofile"
