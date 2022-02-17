@@ -1,10 +1,10 @@
 local M = {
     active_plugin = 1,
     resize = true,
-    cursorcolumn = true,
+    cursorcolumn = false,
     cursorline = true,
     signcolumn = false,
-    colorcolumn = true,
+    colorcolumn = false,
     colorcolumn_width = 80,
     number = false,
     relativenumber = false,
