@@ -224,8 +224,8 @@ M.resize_columns = function()
                     api.nvim_win_set_height(tbl[i][2], max_height)
                 elseif tbl[i][1][1] == "cols" and tbl[i][2][1] == "cols" then
                     if tbl[i][1][2] == current_window or tbl[i][2][2] == current_window then
-                        api.nvim_win_set_width(tbl[i][2][1], golden_width)
-                        api.nvim_win_set_width(tbl[i][2][1], golden_width)
+                        api.nvim_win_set_width(tbl[i][1][2], golden_width)
+                        api.nvim_win_set_width(tbl[i][2][2], golden_width)
                         if tbl[i][1][2] == current_window then
                             api.nvim_win_set_height(tbl[i][1][2], golden_height)
                             api.nvim_win_set_height(tbl[i][2][2], height_average)
