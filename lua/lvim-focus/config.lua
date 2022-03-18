@@ -31,7 +31,8 @@ local M = {
         "dapui_scopes",
         "dapui_breakpoints",
         "dapui_stacks",
-        "dapui_watches"
+        "dapui_watches",
+        "calendar"
     },
     blacklist_bt = {
         "nofile"
