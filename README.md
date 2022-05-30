@@ -6,15 +6,14 @@
 
 ## Description
 
-- Auto resize windows
-- Optimal size (width and height) for active window
-- Uniform size (width and height) for inactive windows
-- Hide `cursorcolumn`, `cursorline`, `signcolumn`, `colorcolumn`, `number`, `relativenumber`, `hybridnumber` for inactive windows
-- Add `winhighlight` for active window (hi `LvimFocus` - add to your colorscheme)
-- Blacklist of filetypes
-- Deactivate of the plugin on startup with option `active_plugin = 0`
-- Dynamic activate / deactivate of the plugin whit command `:LvimFocusToggle`
-- The main advantage over other similar plugins - correct resize
+-   Auto resize windows
+-   Optimal size (width and height) for windows
+-   Hide `cursorcolumn`, `cursorline`, `signcolumn`, `colorcolumn`, `number`, `relativenumber` for inactive windows
+-   Add `winhighlight` for active window (hi `LvimFocusNormal` - add to your colorscheme)
+-   Blacklist of filetypes
+-   Deactivate of the plugin on startup with option `active_plugin = 0`
+-   Dynamic activate / deactivate of the plugin whit command `:LvimFocusToggle`
+-   The main advantage over other similar plugins - correct resize
 
 <details>
 <summary>Screenshots</summary>
@@ -29,7 +28,7 @@
 
 ## Requirements
 
-- [neovim (>=0.5.0)](https://github.com/neovim/neovim/wiki/Installing-Neovim)
+-   [neovim (>=0.7.0)](https://github.com/neovim/neovim/wiki/Installing-Neovim)
 
 ## Install
 
@@ -47,29 +46,49 @@ use {
 ```lua
 {
     active_plugin = 1,
-    resize = true,
-    cursorcolumn = true,
-    cursorline = true,
-    signcolumn = true,
-    colorcolumn = true,
-    colorcolumn_width = 80,
+    size_stabilize = true,
+    cursorcolumn = false,
+    cursorline = false,
+    signcolumn = false,
+    signcolumn_value = "yes",
+    colorcolumn = false,
+    colorcolumn_value = "80",
     number = false,
-    relativenumber = false,
-    hybridnumber = true,
+    relativenumber = true,
     winhighlight = true,
     blacklist_ft = {
         "ctrlspace",
         "packer",
+        "undotree",
+        "diff",
         "Outline",
         "NvimTree",
         "LvimHelper",
+        "floaterm",
+        "toggleterm",
         "Trouble",
         "dashboard",
         "vista",
         "spectre_panel",
-        "diffviewfiles",
-        "qf"
-    }
+        "DiffviewFiles",
+        "flutterToolsOutline",
+        "log",
+        "qf",
+        "dapui_scopes",
+        "dapui_breakpoints",
+        "dapui_stacks",
+        "dapui_watches",
+        "calendar",
+    },
+    blacklist_bt = {
+        "nofile",
+        "quickfix",
+        "help",
+        "terminal",
+        "directory",
+        "scratch",
+        "unlisted",
+    },
 }
 ```
 

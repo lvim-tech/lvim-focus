@@ -1,15 +1,15 @@
 local M = {
     active_plugin = 1,
-    resize = true,
+    size_stabilize = true,
     cursorcolumn = false,
     cursorline = false,
     signcolumn = false,
+    signcolumn_value = "yes",
     colorcolumn = false,
-    colorcolumn_width = 80,
+    colorcolumn_value = "80",
     number = false,
-    relativenumber = false,
-    hybridnumber = false,
-    winhighlight = false,
+    relativenumber = true,
+    winhighlight = true,
     blacklist_ft = {
         "ctrlspace",
         "packer",
@@ -32,11 +32,17 @@ local M = {
         "dapui_breakpoints",
         "dapui_stacks",
         "dapui_watches",
-        "calendar"
+        "calendar",
     },
     blacklist_bt = {
-        "nofile"
-    }
+        "nofile",
+        "quickfix",
+        "help",
+        "terminal",
+        "directory",
+        "scratch",
+        "unlisted",
+    },
 }
 
 return M
