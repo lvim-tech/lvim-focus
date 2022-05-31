@@ -56,6 +56,10 @@ use {
     number = false,
     relativenumber = true,
     winhighlight = true,
+    custom = {
+        active = false, -- or function
+        inactive = false, -- or function
+    },
     blacklist_ft = {
         "ctrlspace",
         "packer",

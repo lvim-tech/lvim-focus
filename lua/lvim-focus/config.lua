@@ -10,6 +10,10 @@ local M = {
     number = false,
     relativenumber = true,
     winhighlight = true,
+    custom = {
+        active = false,
+        inactive = false,
+    },
     blacklist_ft = {
         "ctrlspace",
         "packer",

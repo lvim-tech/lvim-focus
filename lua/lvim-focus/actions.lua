@@ -49,6 +49,14 @@ M.win_options = function()
                 vim.api.nvim_win_set_option(win_current, "winhighlight", "Normal:LvimFocusNormal")
             end
         end
+        if type(config.custom.active) == "function" then
+            if tbl_set[win_current] then
+                config.custom.active(win_current)
+            end
+        end
+        if type(config.custom.inactive) == "function" then
+            config.custom.inactive(v)
+        end
     end
     if config.size_stabilize then
         local ft = vim.api.nvim_buf_get_option(vim.api.nvim_win_get_buf(win_current), "filetype")
@@ -67,7 +75,7 @@ M.win_default = function()
             vim.api.nvim_win_set_option(v, "cursorline", true)
         end
         if config.signcolumn then
-            vim.api.nvim_win_set_option(v, "signcolumn", "yes")
+            vim.api.nvim_win_set_option(v, "signcolumn", config.signcolumn_value)
         end
         if config.colorcolumn then
             vim.api.nvim_win_set_option(v, "colorcolumn", config.colorcolumn_value)
@@ -80,6 +88,9 @@ M.win_default = function()
         end
         if config.cursorline then
             vim.api.nvim_win_set_option(v, "winhighlight", "Normal:Normal")
+        end
+        if type(config.custom.inactive) == "function" then
+            config.custom.inactive(v)
         end
     end
 end
