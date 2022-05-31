@@ -59,10 +59,7 @@ M.win_options = function()
         end
     end
     if config.size_stabilize then
-        local ft = vim.api.nvim_buf_get_option(vim.api.nvim_win_get_buf(win_current), "filetype")
-        if ft ~= "ctrlspace" and ft ~= "floaterm" and ft ~= "toggleterm" then
-            vim.api.nvim_exec([[exe "normal \<C-W>\="]], true)
-        end
+        vim.cmd("wincmd=")
     end
 end
 
