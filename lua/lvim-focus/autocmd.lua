@@ -15,6 +15,7 @@ M.enable = function()
         "BufLeave",
         "WinLeave",
         "WinClosed",
+        "VimResized",
     }, {
         callback = function()
             vim.schedule(function()

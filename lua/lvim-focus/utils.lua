@@ -1,5 +1,5 @@
-local cmd = vim.api.nvim_command
 local config = require("lvim-focus.config")
+
 local M = {}
 
 M.buffers = {}
