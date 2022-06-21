@@ -44,7 +44,7 @@ M.win_options = function()
             end
         end
         if config.winhighlight then
-            vim.api.nvim_win_set_option(v, "winhighlight", "Normal:Normal")
+            vim.api.nvim_win_set_option(v, "winhighlight", "Normal:LvimFocusNormalNC")
             if tbl_set[win_current] then
                 vim.api.nvim_win_set_option(win_current, "winhighlight", "Normal:LvimFocusNormal")
             end
