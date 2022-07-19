@@ -54,6 +54,7 @@ M.win_options = function()
 	end
 	if config.size_stabilize then
 		vim.cmd("wincmd=")
+		vim.opt.cmdheight = config.cmdheight
 	end
 end
 

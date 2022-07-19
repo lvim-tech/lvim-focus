@@ -9,6 +9,7 @@ local M = {
 	colorcolumn_value = "120",
 	number = false,
 	relativenumber = true,
+	cmdheight = 1,
 	custom = {
 		active = false,
 		inactive = false,
