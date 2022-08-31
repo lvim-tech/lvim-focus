@@ -37,6 +37,7 @@ local M = {
 		"dapui_stacks",
 		"dapui_watches",
 		"calendar",
+		"org",
 	},
 	blacklist_bt = {
 		"nofile",
