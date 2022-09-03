@@ -20,7 +20,8 @@ M.enable = function()
 		callback = function()
 			vim.schedule(function()
 				local ft = vim.api.nvim_buf_get_option(vim.api.nvim_win_get_buf(0), "filetype")
-				if ft ~= "ctrlspace" and ft ~= "ctrlspace_help" then
+				local bt = vim.api.nvim_buf_get_option(vim.api.nvim_win_get_buf(0), "buftype")
+				if not utils.ignore_by_ft(ft) and not utils.ignore_by_bt(bt) then
 					M.enable_action()
 				end
 			end)
