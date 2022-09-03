@@ -43,15 +43,6 @@ M.win_options = function()
 				vim.api.nvim_win_set_option(win_current, "relativenumber", true)
 			end
 		end
-		if config.winhighlight then
-			vim.api.nvim_win_set_option(v, "winhighlight", "Normal:LvimFocusNormalNC")
-			if tbl_set[win_current] then
-				vim.api.nvim_win_set_option(win_current, "winhighlight", "Normal:LvimFocusNormal")
-			end
-			if utils.is_floating(v) then
-				vim.api.nvim_win_set_option(v, "winhighlight", "Normal:LvimFocusFloat")
-			end
-		end
 		if type(config.custom.active) == "function" then
 			if tbl_set[win_current] then
 				config.custom.active(win_current)
@@ -64,6 +55,13 @@ M.win_options = function()
 	if config.size_stabilize then
 		vim.cmd("wincmd=")
 		vim.opt.cmdheight = config.cmdheight
+	end
+	if config.winhighlight then
+		for _, win in ipairs(vim.api.nvim_list_wins()) do
+			if utils.is_floating(win) then
+				vim.api.nvim_win_set_option(win, "winhighlight", "Normal:LvimFocusFloat")
+			end
+		end
 	end
 end
 
