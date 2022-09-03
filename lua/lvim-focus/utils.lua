@@ -68,11 +68,8 @@ M.ignore_by_bt = function(bt)
 	end
 end
 
-M.ignore_by_float = function()
-	local current_config = vim.api.nvim_win_get_config(0)
-	if current_config["relative"] ~= "" then
-		return 1
-	end
+M.is_floating = function(window_id)
+	return vim.api.nvim_win_get_config(window_id).relative ~= ""
 end
 
 M.valid_buffers = function(tbl)

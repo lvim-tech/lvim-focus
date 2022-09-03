@@ -10,6 +10,7 @@ local M = {
 	number = false,
 	relativenumber = true,
 	cmdheight = 1,
+	winhighlight = true,
 	custom = {
 		active = false,
 		inactive = false,

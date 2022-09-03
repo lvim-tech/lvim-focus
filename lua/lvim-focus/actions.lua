@@ -43,6 +43,15 @@ M.win_options = function()
 				vim.api.nvim_win_set_option(win_current, "relativenumber", true)
 			end
 		end
+		if config.winhighlight then
+			vim.api.nvim_win_set_option(v, "winhighlight", "Normal:LvimFocusNormalNC")
+			if tbl_set[win_current] then
+				vim.api.nvim_win_set_option(win_current, "winhighlight", "Normal:LvimFocusNormal")
+			end
+			if utils.is_floating(v) then
+				vim.api.nvim_win_set_option(v, "winhighlight", "Normal:LvimFocusFloat")
+			end
+		end
 		if type(config.custom.active) == "function" then
 			if tbl_set[win_current] then
 				config.custom.active(win_current)
