@@ -17,6 +17,7 @@ local M = {
 	},
 	blacklist_ft = {
 		"ctrlspace",
+		"ctrlspace_help",
 		"packer",
 		"undotree",
 		"diff",
@@ -40,6 +41,8 @@ local M = {
 		"calendar",
 		"org",
 		"octo",
+		"neo-tree",
+		"neo-tree-popup",
 	},
 	blacklist_bt = {
 		"nofile",
