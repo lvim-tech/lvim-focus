@@ -46,6 +46,7 @@ local M = {
 	},
 	blacklist_bt = {
 		"nofile",
+		"nowrite",
 		"quickfix",
 		"help",
 		"terminal",
