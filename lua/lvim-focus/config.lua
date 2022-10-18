@@ -38,6 +38,7 @@ local M = {
 		"dapui_watches",
 		"calendar",
 		"org",
+		"tex",
 		"octo",
 		"neo-tree",
 		"neo-tree-popup",
