@@ -54,14 +54,6 @@ M.win_options = function()
 	end
 	if config.size_stabilize then
 		vim.cmd("wincmd=")
-		vim.opt.cmdheight = config.cmdheight
-	end
-	if config.winhighlight then
-		for _, win in ipairs(vim.api.nvim_list_wins()) do
-			if utils.is_floating(win) then
-				vim.api.nvim_win_set_option(win, "winhighlight", "Normal:LvimFocusFloat")
-			end
-		end
 	end
 end
 

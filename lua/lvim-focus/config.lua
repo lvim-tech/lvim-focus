@@ -9,8 +9,6 @@ local M = {
 	colorcolumn_value = "120",
 	number = false,
 	relativenumber = true,
-	cmdheight = 1,
-	winhighlight = true,
 	custom = {
 		active = false,
 		inactive = false,
@@ -43,6 +41,7 @@ local M = {
 		"octo",
 		"neo-tree",
 		"neo-tree-popup",
+		"noice",
 	},
 	blacklist_bt = {
 		"nofile",
