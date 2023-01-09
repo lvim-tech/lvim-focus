@@ -44,6 +44,7 @@ local M = {
 		"toggleterm",
 		"undotree",
 		"vista",
+		"oil",
 	},
 	blacklist_bt = {
 		"nofile",
